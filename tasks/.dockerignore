@@ -1,0 +1,4 @@
+*.md
+.git
+movies_admin//.idea
+movies_admin//.idea/.gitignore
