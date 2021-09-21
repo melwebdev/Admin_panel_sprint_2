@@ -91,3 +91,5 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = '/Users/a.trubetskov/Documents/python_mid/Admin_panel_sprint_2/tasks/host_volume'

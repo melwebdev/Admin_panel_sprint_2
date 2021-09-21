@@ -7,7 +7,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=movies
     volumes:
-      - /Users/a.trubetskov/Documents/python_mid/docker_mnt/postgres:/var/lib/postgresql/data
+      - ./postgres:/var/lib/postgresql/data
     ports:
       - ${POSTGRES_PORT:-5432}:5432
   backend:

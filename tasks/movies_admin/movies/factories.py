@@ -82,7 +82,6 @@ class FilmworkFactoryMovies(factory.django.DjangoModelFactory):
     title = factory.LazyAttribute(filmwork_title)
     description = factory.LazyAttribute(filmwork_description)
     creation_date = factory.LazyAttribute(rand_date)
- #   file_path = 'hdfs://storaga/movies/'
     rating = factory.LazyAttribute(rand_rating)
     age_rating = factory.Iterator(AgeRating.objects.all())
     type = 'Movie'
@@ -96,7 +95,6 @@ class FilmworkFactoryTvSeries(factory.django.DjangoModelFactory):
     title = factory.LazyAttribute(filmwork_title)
     description = factory.LazyAttribute(filmwork_description)
     creation_date = factory.LazyAttribute(rand_date)
-    #   file_path = 'hdfs://storaga/movies/'
     rating = factory.LazyAttribute(rand_rating)
     age_rating = factory.Iterator(AgeRating.objects.all())
     type = 'Serial'
@@ -148,6 +146,7 @@ class PersonActorRoleFactory(factory.django.DjangoModelFactory):
     person = factory.SubFactory(Person)
     role = factory.LazyAttribute(PersonRole.Roles.ACTOR)
 
+
 def make_objects():
     PersonFactory.create_batch(size=10000)
     GenreFactory.create_batch(size=12000)
@@ -157,5 +156,6 @@ def make_objects():
     UserFactory.create_batch(size=20, groups=(Group.objects.filter(name='content-manager')))
     FilmworkGenreFactory.create_batch(size=1300000, genres=(random.sample(list(Genre.objects.all()),
                                                                           random.randrange(1, 3))))
+
 
 make_objects()
