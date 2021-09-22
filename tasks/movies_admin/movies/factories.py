@@ -16,7 +16,8 @@ main = ['Action', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance',
         'The Revisionist and Anti-Western', 'Contemporary and Neo-Western',
         'Fantasy and Space Western', 'Modern Western', 'Historical Romance', 'Romantic Drama',
         'Romantic Comedy', 'Chick Flick', 'Paranormal Romance', 'Conspiracy Thriller'
-        'Crime Thriller', 'Legal Thriller', 'Spy Thriller', 'Supernatural Thriller', 'Animation']
+                                                                'Crime Thriller', 'Legal Thriller', 'Spy Thriller',
+        'Supernatural Thriller', 'Animation']
 secondary = ['', 'War and Military', 'Spy and Espionage', 'Martial Arts', 'Western Shoot ‘Em Up',
              'Crime', 'Disaster', 'Psychological', 'Techno', 'Slapstick', 'Screwball', 'Parody',
              'Black', 'Zombie', 'Folk', 'Body', 'Found Footage']
@@ -32,7 +33,7 @@ def rand_date(a):
 
 
 def rand_rating(a):
-    return random.randrange(100)/10
+    return random.randrange(100) / 10
 
 
 def movie_path(title):
@@ -124,6 +125,7 @@ class FilmworkGenreFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Filmwork
         django_get_or_create = ('title', 'creation_date')
+
     title = factory.Iterator(Filmwork.objects.all())
 
     @factory.post_generation
@@ -137,7 +139,6 @@ class FilmworkGenreFactory(factory.django.DjangoModelFactory):
 
 
 class PersonActorRoleFactory(factory.django.DjangoModelFactory):
-
     class Meta:
         model = PersonRole
         django_get_or_create = ('person_id', 'filmwork_id', 'role')

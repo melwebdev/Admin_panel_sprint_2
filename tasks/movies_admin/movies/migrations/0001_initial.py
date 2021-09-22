@@ -9,7 +9,6 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -19,9 +18,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AgeRating',
             fields=[
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, verbose_name='id')),
+                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False,
+                                                                verbose_name='created')),
+                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False,
+                                                                      verbose_name='modified')),
+                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False,
+                                        verbose_name='id')),
                 ('name', models.CharField(max_length=255, unique=True, verbose_name='name')),
                 ('description', models.TextField(blank=True, verbose_name='description')),
             ],
@@ -33,15 +35,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Filmwork',
             fields=[
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
+                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False,
+                                                                verbose_name='created')),
+                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False,
+                                                                      verbose_name='modified')),
                 ('type', models.CharField(choices=[('Movie', 'Movie'), ('Serial', 'Serial')], max_length=6)),
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, verbose_name='id')),
+                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False,
+                                        verbose_name='id')),
                 ('title', models.CharField(max_length=255, verbose_name='title')),
                 ('description', models.TextField(blank=True, null=True, verbose_name='description')),
                 ('creation_date', models.DateField(verbose_name='creation date')),
                 ('file_path', models.FileField(blank=True, upload_to='film_works/', verbose_name='file location')),
-                ('rating', models.DecimalField(decimal_places=1, max_digits=3, null=True, validators=[django.core.validators.MinValueValidator(0.0), django.core.validators.MaxValueValidator(10.0)], verbose_name='rating')),
+                ('rating', models.DecimalField(decimal_places=1, max_digits=3, null=True,
+                                               validators=[django.core.validators.MinValueValidator(0.0),
+                                                           django.core.validators.MaxValueValidator(10.0)],
+                                               verbose_name='rating')),
             ],
             options={
                 'verbose_name': 'movie',
@@ -51,9 +59,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Genre',
             fields=[
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, verbose_name='id')),
+                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False,
+                                                                verbose_name='created')),
+                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False,
+                                                                      verbose_name='modified')),
+                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False,
+                                        verbose_name='id')),
                 ('name', models.CharField(max_length=255, unique=True, verbose_name='name')),
                 ('description', models.TextField(blank=True, verbose_name='description')),
             ],
@@ -65,9 +76,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Person',
             fields=[
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, verbose_name='id')),
+                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False,
+                                                                verbose_name='created')),
+                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False,
+                                                                      verbose_name='modified')),
+                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False,
+                                        verbose_name='id')),
                 ('name', models.CharField(max_length=255, verbose_name='name')),
             ],
             options={
@@ -79,11 +93,17 @@ class Migration(migrations.Migration):
             name='PersonRole',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('role', models.CharField(choices=[('Director', 'Director'), ('Actor', 'Actor'), ('Writer', 'Writer')], max_length=8)),
-                ('filmwork', models.ForeignKey(max_length=20, on_delete=django.db.models.deletion.CASCADE, related_name='film_relation', to='movies.filmwork', verbose_name='movie')),
-                ('person', models.ForeignKey(max_length=20, on_delete=django.db.models.deletion.CASCADE, related_name='film_relation', to='movies.person', verbose_name='person')),
+                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False,
+                                                                verbose_name='created')),
+                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False,
+                                                                      verbose_name='modified')),
+                ('role', models.CharField(choices=[('Director', 'Director'), ('Actor', 'Actor'), ('Writer', 'Writer')],
+                                          max_length=8)),
+                ('filmwork', models.ForeignKey(max_length=20, on_delete=django.db.models.deletion.CASCADE,
+                                               related_name='film_relation', to='movies.filmwork',
+                                               verbose_name='movie')),
+                ('person', models.ForeignKey(max_length=20, on_delete=django.db.models.deletion.CASCADE,
+                                             related_name='film_relation', to='movies.person', verbose_name='person')),
             ],
             options={
                 'verbose_name': 'relation',
@@ -97,7 +117,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='filmwork',
             name='age_rating',
-            field=models.ForeignKey(max_length=20, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='film_age_rating', to='movies.agerating', verbose_name='age rating'),
+            field=models.ForeignKey(max_length=20, null=True, on_delete=django.db.models.deletion.SET_NULL,
+                                    related_name='film_age_rating', to='movies.agerating', verbose_name='age rating'),
         ),
         migrations.AddField(
             model_name='filmwork',
@@ -110,7 +131,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AddConstraint(
             model_name='personrole',
-            constraint=models.UniqueConstraint(fields=('filmwork', 'person', 'role'), name='unique person role for movie'),
+            constraint=models.UniqueConstraint(fields=('filmwork', 'person', 'role'),
+                                               name='unique person role for movie'),
         ),
         migrations.AddIndex(
             model_name='filmwork',

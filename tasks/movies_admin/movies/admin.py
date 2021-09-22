@@ -7,6 +7,7 @@ class PersonRoleInline(admin.TabularInline):
     extra = 0
     autocomplete_fields = ('person', 'filmwork')
 
+
 @admin.register(Filmwork)
 class FilmworkAdmin(admin.ModelAdmin):
     list_display = ('title', 'type', 'creation_date', 'rating', 'age_rating')
@@ -47,6 +48,6 @@ class FilmworkAdmin(admin.ModelAdmin):
 
 @admin.register(PersonRole)
 class FilmworkAdmin(admin.ModelAdmin):
-    list_display = ('person', 'filmwork','role',)
+    list_display = ('person', 'filmwork', 'role',)
     fields = ('role', 'person', 'filmwork')
     list_filter = ('role',)

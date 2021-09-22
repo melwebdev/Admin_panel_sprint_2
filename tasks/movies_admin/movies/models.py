@@ -128,5 +128,3 @@ class PersonRole(TimeStampedModel):
         ]
         verbose_name = _('relation')
         verbose_name_plural = _('relations')
-
-

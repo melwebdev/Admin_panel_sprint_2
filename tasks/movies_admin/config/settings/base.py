@@ -58,12 +58,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 DATABASES = {
     'default': env.db(),
 
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -92,4 +90,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/Users/a.trubetskov/Documents/python_mid/Admin_panel_sprint_2/tasks/host_volume'
+STATIC_ROOT = './../host_volume'
