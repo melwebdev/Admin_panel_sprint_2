@@ -1,7 +1,7 @@
 #Deployment
 
 1. Один раз запускаем из ./Admin_panel_sprint_2/tasks $ docker-compose build
-2. Распаковываем базу с тестовыми данными:
+2. Распаковываем базу с тестовыми данными (база хранится в гите как LFS object):
 gzip -d ./Admin_panel_sprint_2/tasks/sql/movies_schema_dump.sql.gz
 3. Редактируем файл ./Admin_panel_sprint_2/tasks/movies_admin/config/settings/.env
    (пример в ./Admin_panel_sprint_2/tasks/movies_admin/config/settings/.env_template)
@@ -14,6 +14,9 @@ gzip -d ./Admin_panel_sprint_2/tasks/sql/movies_schema_dump.sql.gz
 Контейнеры поднимутся, но база postgres будет заполняться данными несколько минут,
    прежде чем будет готова принимать подключения. Её статус можно смотреть в логах командой $ docker-compose logs pg_db
    
+5. Опционально после того как база установится в постгресе можно перезапустить контейнеры
+   ./Admin_panel_sprint_2/tasks $ docker-compose stop
+   ./Admin_panel_sprint_2/tasks $ docker-compose up -d
 5. Заходим http://127.0.0.1/admin
     user: admin
     password: pass123
