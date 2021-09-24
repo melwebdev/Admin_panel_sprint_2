@@ -1,7 +1,7 @@
 #Deployment
 
 1. Один раз запускаем из ./Admin_panel_sprint_2/tasks $ docker-compose build
-2. Распаковываем базу с тестовыми данными (база хранится в гите как LFS object):
+2. Распаковываем базу с тестовыми данными (база хранится в гите как LFS object, 130Mb):
 gzip -d ./Admin_panel_sprint_2/tasks/sql/movies_schema_dump.sql.gz
 3. Редактируем файл ./Admin_panel_sprint_2/tasks/movies_admin/config/settings/.env
    (пример в ./Admin_panel_sprint_2/tasks/movies_admin/config/settings/.env_template)
