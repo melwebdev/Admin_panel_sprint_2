@@ -25,10 +25,14 @@ gzip -d ./Admin_panel_sprint_2/tasks/sql/movies_schema_dump.sql.gz
    
 6. Осановка контейнеров $ docker-compose stop
 
-7. factories использовался для генерации тестовой базы. Вызов осуществляется из контейнера backend
+7. factories использовался для генерации тестовой базы. 
+   Изначално использовался интерактивный шелл (кажется ipython) который при запуске самостоятельно подтянул все необходимые
+   зависимости, но теперь они явно прописаны в импорте
+    Вызов осуществляется из контейнера backend
     Для этого после запуска контейнеров через docker-compose необходимо в интерактивном режиме зайти в контейнер backend
     docker exec -it tasks_backend_1  /bin/bash
     Далее запускам интерпретатор:
     python /apps/movies_admin/manage.py shell_plus
     Запускаем процесс генерации:
     import movies.factories
+   
