@@ -5,6 +5,8 @@ import random
 from faker import Faker
 import itertools
 from django.contrib.auth.hashers import make_password
+from .models import Person, PersonRole, Genre, Filmwork, AgeRating
+from django.contrib.auth.models import Group, User
 
 fake = Faker()
 Faker.seed(1)
@@ -37,14 +39,14 @@ def rand_rating(a):
 
 
 def movie_path(title):
-    return '/movies/%s' % (title)
+    return f'/movies/{title}'
 
 
 def person_name(a):
     if random.random() < 0.5:
-        return fake.first_name_female() + " " + fake.last_name_female()
+        return f'{fake.first_name_female()} {fake.last_name_female()}'
     else:
-        return fake.first_name_male() + " " + fake.last_name_male()
+        return f'{fake.first_name_male()} {fake.last_name_male()}'
 
 
 def filmwork_title(a):
@@ -106,8 +108,8 @@ class UserFactory(factory.django.DjangoModelFactory):
         model = User
         django_get_or_create = ('username',)
 
-    email = factory.Sequence(lambda n: 'person{}@example.com'.format(n))
-    username = factory.Sequence(lambda n: "user_%d" % n)
+    email = factory.Sequence(lambda n: f'person{n}@example.com')
+    username = factory.Sequence(lambda n: f'user_{n}')
     password = make_password('pass123', salt=None, hasher='default')
     date_joined = factory.LazyFunction(datetime.datetime.now)
     is_staff = True
